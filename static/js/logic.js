@@ -62,10 +62,10 @@ d3.json(queryUrl).then(function(data) {
   var earthquakes = L.layerGroup(quakes);
   
   // Create a baseMaps object
-  var baseMaps = {
-    "Earthquakes": earthquakes,
-    "Dark Map": darkmap
-  };
+//   var baseMaps = {
+//     "Earthquakes": earthquakes,
+//     "Dark Map": darkmap
+//   };
   
   // Create an overlay object
   var overlayMaps = {
@@ -76,7 +76,7 @@ d3.json(queryUrl).then(function(data) {
   var myMap = L.map("map", {
     center: [37.09, -95.71],
     zoom: 5,
-    layers: [streetmap, earthquakes]
+    layers: [darkmap, earthquakes]
   });
   
   // Pass our map layers into our layer control
