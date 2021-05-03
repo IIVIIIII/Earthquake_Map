@@ -16,7 +16,7 @@ d3.json(queryUrl).then(function(data) {
         .range([0, 900000])
 
     var colorScale = d3.scaleSequential()
-        .domain(d3.extent(data.map(q => parseFloat(q.geometry.coordinates[2]))))
+        .domain([0, d3.max(data.map(q => parseFloat(q.geometry.coordinates[2])))])
         .interpolator(d3.interpolatePlasma)
 
 console.log(sizeScale(0))
@@ -71,7 +71,7 @@ console.log(sizeScale(9))
   // Define a map object
   var myMap = L.map("map", {
     center: [37.09, -95.71],
-    zoom: 5,
+    zoom: 4,
     layers: [darkmap, earthquakes]
   });
   
