@@ -16,7 +16,7 @@ d3.json(queryUrl).then(function(data) {
         .interpolator(d3.interpolatePlasma)
 
     var limitScale = d3.scaleLinear()
-        .domain([0, 8])
+        .domain([0, 7])
         .range(d3.extent(data.map(q => parseFloat(q.geometry.coordinates[2]))))
         
 
@@ -62,6 +62,7 @@ d3.json(queryUrl).then(function(data) {
     layers: [darkmap, earthquakes]
   });
 
+
   var legend = L.control({ position: "bottomright" });
   legend.onAdd = function() {
       var div = L.DomUtil.create("div", "info legend");
@@ -70,7 +71,7 @@ d3.json(queryUrl).then(function(data) {
       var labels = [];
 
           // Add min & max
-  var legendInfo = "<h1>Median Income</h1>" +
+  var legendInfo = "<h1>Depth</h1>" +
   "<div class=\"labels\">" +
     "<div class=\"min\">" + limits[0] + "</div>" +
     "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
@@ -85,7 +86,8 @@ limits.forEach(function(limit, index) {
   div.innerHTML += "<ul>" + labels.join("") + "</ul>";
   return div;
   };
-  
+
+
   legend.addTo(myMap);
   
 
