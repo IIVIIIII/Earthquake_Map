@@ -67,10 +67,10 @@ d3.json(queryUrl).then(function(data) {
 //     "Dark Map": darkmap
 //   };
   
-  // Create an overlay object
-  var overlayMaps = {
-    "Earthquakes": earthquakes
-  };
+//   // Create an overlay object
+//   var overlayMaps = {
+//     "Earthquakes": earthquakes
+//   };
   
   // Define a map object
   var myMap = L.map("map", {
