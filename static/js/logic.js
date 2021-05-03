@@ -1,5 +1,5 @@
 // Store our API endpoint inside queryUrl
-var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
+var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
 // Perform a GET request to the query URL
 d3.json(queryUrl).then(function(data) {
@@ -15,15 +15,28 @@ d3.json(queryUrl).then(function(data) {
   data.forEach(q => {
     // Setting the marker radius for the state by passing population into the markerSize function
     quakes.push(
-      L.circle([q.geometry.coordinates[0],q.geometry.coordinates[1]], {
+      L.circle([q.geometry.coordinates[1], q.geometry.coordinates[0]], {
         stroke: false,
         fillOpacity: 0.75,
         color: "white",
         fillColor: "blue",
-        radius: 1000000
+        radius: 100000
       })
     );
     })
+
+// console.log(data[717].geometry.coordinates)
+
+
+// quakes.push(
+//           L.circle([37.09, -95.71], {
+//             stroke: false,
+//             fillOpacity: 0.75,
+//             color: "white",
+//             fillColor: "blue",
+//             radius: 1000000
+//           })
+//         );
   
   
   // Create base layers
