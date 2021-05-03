@@ -60,17 +60,7 @@ d3.json(queryUrl).then(function(data) {
   
   // Create two separate layer groups: one for cities and one for states
   var earthquakes = L.layerGroup(quakes);
-  
-  // Create a baseMaps object
-//   var baseMaps = {
-//     "Earthquakes": earthquakes,
-//     "Dark Map": darkmap
-//   };
-  
-//   // Create an overlay object
-//   var overlayMaps = {
-//     "Earthquakes": earthquakes
-//   };
+
   
   // Define a map object
   var myMap = L.map("map", {
@@ -79,11 +69,11 @@ d3.json(queryUrl).then(function(data) {
     layers: [darkmap, earthquakes]
   });
   
-  // Pass our map layers into our layer control
-  // Add the layer control to the map
-  L.control.layers(baseMaps, overlayMaps, {
-    collapsed: false
-  }).addTo(myMap);
+//   // Pass our map layers into our layer control
+//   // Add the layer control to the map
+//   L.control.layers(baseMaps, overlayMaps, {
+//     collapsed: false
+//   }).addTo(myMap);
   
 
 
