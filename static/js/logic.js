@@ -24,22 +24,6 @@ d3.json(queryUrl).then(function(data) {
       })
     );
     })
-
-// console.log(data[717].geometry.coordinates)
-
-
-// quakes.push(
-//           L.circle([37.09, -95.71], {
-//             stroke: false,
-//             fillOpacity: 0.75,
-//             color: "white",
-//             fillColor: "blue",
-//             radius: 1000000
-//           })
-//         );
-  
-  
-  // Create base layers
   
   // Streetmap Layer
   var streetmap = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}", {
