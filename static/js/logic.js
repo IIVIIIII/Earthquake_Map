@@ -15,6 +15,10 @@ d3.json(queryUrl).then(function(data) {
         .domain([0, 9])
         .range([0, 900000])
 
+    var colorScale = d3.scaleSequential()
+        .domain(d3.extent(data.map(q => parseFloat(q.geometry.coordinates[2]))))
+        .interpolator(d3.interpolatePlasma)
+
 console.log(sizeScale(0))
 console.log(sizeScale(1))
 console.log(sizeScale(2))
@@ -37,7 +41,7 @@ console.log(sizeScale(9))
         stroke: false,
         fillOpacity: 0.75,
         color: "white",
-        fillColor: "blue",
+        fillColor: colorScale(q.geometry.coordinates[2]),
         radius: sizeScale(q.properties.mag)
       })
     );
