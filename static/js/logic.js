@@ -3,7 +3,9 @@ var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_we
 
 // Perform a GET request to the query URL
 d3.json(queryUrl).then(function(data) {
-    
+
+    console.log(data)
+
   data = data.features
 
   var sizeScale = d3.scalePow()
@@ -12,20 +14,22 @@ d3.json(queryUrl).then(function(data) {
         .range([0, 1000000])
 
     var colorScale = d3.scaleSequential()
-        .domain([0, d3.max(data.map(q => parseFloat(q.geometry.coordinates[2])))])
+        .domain(d3.extent(data.map(q => parseFloat(q.geometry.coordinates[2]))))
         .interpolator(d3.interpolatePlasma)
 
   var quakes = [];
 
   data.forEach(q => {
     quakes.push(
-      L.circle([q.geometry.coordinates[1], q.geometry.coordinates[0]], {
+      L
+      .circle([q.geometry.coordinates[1], q.geometry.coordinates[0]], {
         stroke: false,
         fillOpacity: 0.5,
         color: "white",
         fillColor: colorScale(q.geometry.coordinates[2]),
         radius: sizeScale(q.properties.mag)
       })
+      .bindPopup(`<h5>Location: ${q.properties.place}</h5><h5>Time: ${Date(q.properties.time)}</h5><h5>Magnitude: ${q.properties.mag}</h5><h5>Depth: ${q.geometry.coordinates[2]}</h5>`)
     );
     })
   
