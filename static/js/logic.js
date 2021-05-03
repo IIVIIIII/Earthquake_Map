@@ -8,7 +8,25 @@ d3.json(queryUrl).then(function(data) {
 
   console.log(data)
 
-    // Define arrays to hold created city and state markers
+  
+
+  var sizeScale = d3.scalePow()
+        .exponent(2)
+        .domain([0, 9])
+        .range([0, 900000])
+
+console.log(sizeScale(0))
+console.log(sizeScale(1))
+console.log(sizeScale(2))
+console.log(sizeScale(3))
+console.log(sizeScale(4))
+console.log(sizeScale(5))
+console.log(sizeScale(6))
+console.log(sizeScale(7))
+console.log(sizeScale(8))
+console.log(sizeScale(9))
+
+// Define arrays to hold created city and state markers
   var quakes = [];
   
   // Loop through locations and create city and state markers
@@ -20,7 +38,7 @@ d3.json(queryUrl).then(function(data) {
         fillOpacity: 0.75,
         color: "white",
         fillColor: "blue",
-        radius: 100000
+        radius: sizeScale(q.properties.mag)
       })
     );
     })
