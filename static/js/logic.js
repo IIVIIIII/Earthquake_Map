@@ -17,7 +17,7 @@ d3.json(queryUrl).then(function(data) {
 
     var colorScale = d3.scaleSequential()
         .domain([0, d3.max(data.map(q => parseFloat(q.geometry.coordinates[2])))])
-        .interpolator(d3.interpolatePlasma)
+        .interpolator(d3.interpolateWarm)
 
 console.log(sizeScale(0))
 console.log(sizeScale(1))
