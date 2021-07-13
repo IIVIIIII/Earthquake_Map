@@ -1,2 +1,5 @@
 # This
 *.DS_Store
+
+#api_keys
+config.js
